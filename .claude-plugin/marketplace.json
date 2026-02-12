@@ -6,7 +6,7 @@
   },
   "plugins": [
     {
-      "name": "skills",
+      "name": "research-skills",
       "description": "Agent skills for research: autonomous iteration loops, bibliography management, data visualization, scientific coding, image generation, and TTS.",
       "source": "./"
     }

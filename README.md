@@ -9,7 +9,7 @@ Agent skills for research work — autonomous iteration, scientific visualizatio
 ```bash
 # Claude Code
 claude plugin marketplace add cailmdaley/skills
-claude plugin install skills
+claude plugin install research-skills
 ```
 
 ## What's here
