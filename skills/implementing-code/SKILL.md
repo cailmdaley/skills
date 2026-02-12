@@ -75,33 +75,6 @@ Trust scientific libraries to validate their domains. Skip defensive programming
 - Extended validation (literature comparison, edge cases) only when requested
 - Focus on "does it work" over exhaustive test suites
 
-## Snakemake Script Pattern
-
-```python
-from snakemake.script import snakemake
-import numpy as np
-import matplotlib.pyplot as plt
-
-input_file = snakemake.input[0]
-output_plot = snakemake.output[0]
-params = snakemake.params
-
-data = np.loadtxt(input_file)
-result = np.corrcoef(data.T)[0, 1]
-plt.savefig(output_plot)
-```
-
-Typical project layout:
-```
-project_root/
-  workflow/
-    Snakefile
-    rules/covariance.smk
-    scripts/plot_eb.py        # implementations go here
-  config.yaml
-  results/
-```
-
 ## Working Agreements
 
 - Ask for clarification on ambiguous requirements rather than making design decisions
