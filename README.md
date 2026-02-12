@@ -2,6 +2,10 @@
 
 Research skills for [Claude Code](https://docs.anthropic.com/en/docs/claude-code). Tools for autonomous iteration, scientific visualization, bibliography management, image generation, and more.
 
+**Read each skill before you run it.** These skills shape how Claude works — some, like ralph-loops, run Claude with `--dangerously-skip-permissions` in autonomous loops. Understand what a skill does before activating it.
+
+**These reflect one person's workflow, not universal best practices.** Fork the repo, delete what doesn't fit, rewrite what almost fits. The best skills are the ones you've made your own.
+
 ```bash
 claude plugin add cailmdaley/skills
 ```
