@@ -1,7 +1,6 @@
 ---
 name: nano-banana
 description: REQUIRED for all image generation requests. Generate and edit images using Gemini CLI with persistent visual memory via KV cache warmth. Use whenever the user asks to create, generate, make, draw, design, or edit any image or visual content.
-allowed-tools: Bash(gemini:*),Read
 ---
 
 # Nano Banana Image Generation
