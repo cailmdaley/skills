@@ -14,15 +14,9 @@ claude plugin add cailmdaley/skills
 
 ### ralph-loops — Autonomous iteration loops
 
-The key insight: **context rot kills autonomous agents.** When an LLM works too long in one context, it accumulates bias — confirming its own earlier choices, over-fitting to its own framing, losing the ability to see what's actually there.
+**Context rot kills autonomous agents.** The longer an LLM works in one context, the more it confirms its own earlier choices. Ralph solves this with fresh-context loops: survey, contribute, exit, repeat. Each iteration starts clean — no memory of what came before, just fresh eyes on the current state.
 
-Ralph solves this with *fresh-context loops*. Each iteration: survey the actual state of the system, contribute meaningful work, update state discoverably, exit. The next iteration starts clean — fresh eyes on the real state of things.
-
-Give it a markdown spec describing the desired state (not a checklist), and it loops until reality matches the spec. Each pass uses ~50% of the context window for substantial work before exiting.
-
-Tell Claude to "use the ralph-loops skill to help me write a spec for [your goal]." It will draft a spec from the template, refine it with you, then launch a tmux session that loops autonomously.
-
-The pattern is adapted from [Geoffrey Huntley's Ralph Wiggum](https://ghuntley.com/ralph/) — named for the Simpsons character who cheerfully does his own thing, oblivious to context. Each iteration is Ralph: no memory of what came before, just fresh eyes on the current state.
+Give it a markdown spec describing the desired state (not a checklist), and it loops until reality matches. Pattern adapted from [Geoffrey Huntley's Ralph Wiggum](https://ghuntley.com/ralph/).
 
 ### data-visualization — Scientific figure design
 
