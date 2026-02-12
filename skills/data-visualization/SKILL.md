@@ -13,7 +13,7 @@ description: >
 
 # Data Visualization
 
-A decision framework for translating data into effective visual form. Synthesizes Bertin, Cleveland, Tufte, Cairo, Wilke, and Knaflic—optimized for scientific work with cosmology-specific conventions.
+Decision framework for translating data into effective visual form. Synthesizes Bertin, Cleveland, Tufte, Cairo, Wilke, and Knaflic — optimized for scientific work with cosmology-specific conventions.
 
 ## The Intake Protocol
 

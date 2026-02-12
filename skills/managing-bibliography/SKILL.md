@@ -6,7 +6,6 @@ description: >
   Triggers on: "read paper", "cite", "add to bibliography", "bibtex", "ADS",
   "arXiv", "find paper", "add citation", or any request to read scientific papers
   or manage references.
-model: claude-haiku-4-5
 ---
 
 # Managing Bibliography
@@ -31,31 +30,22 @@ mkdir -p /tmp/2503.19441 && cd /tmp/2503.19441 && tar -xzf /tmp/2503.19441.tar.g
 ls *.tex
 ```
 
-This gives you:
-- Full paper text (not just abstract)
-- Equations and methodology details
-- How authors phrased specific claims
-- Their bibliography (.bib or .bbl files)
-
-Use when you need to:
-- Verify a claim before citing
-- See exact phrasing in another paper
-- Understand methodology not in abstract
-- Cross-reference their citations
+Available after extraction:
+- Full paper text (not just abstract), equations, methodology details
+- Exact author phrasing for verification
+- Their bibliography (.bib or .bbl files) for cross-referencing
 
 ---
 
 ## ADS API Setup
 
-The ADS API requires an API token. Before using citation features:
+Before using citation features, verify `$ADS_API_TOKEN` is set:
 
-1. **Check for token**: The skill reads `$ADS_API_TOKEN` from the environment
-2. **If missing**: Tell the user to create one at https://ui.adsabs.harvard.edu/user/settings/token and set it:
-   ```bash
-   # Add to ~/.zshrc or ~/.bashrc
-   export ADS_API_TOKEN="your-token-here"
-   ```
-3. **Do not proceed** with ADS API calls until the token is available — check with `echo $ADS_API_TOKEN`
+```bash
+echo $ADS_API_TOKEN
+```
+
+If missing, direct the user to create one at https://ui.adsabs.harvard.edu/user/settings/token and export it. Do not proceed with ADS API calls until the token is available.
 
 ---
 

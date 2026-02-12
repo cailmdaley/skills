@@ -8,12 +8,7 @@ description: >
 
 Local text-to-speech via pocket-tts server. Streams audio for low latency. **macOS only** (uses `afplay` as fallback).
 
-## Prerequisites
-
-```bash
-pip install pocket-tts
-brew install ffmpeg
-```
+**Prerequisites**: `pip install pocket-tts` and `brew install ffmpeg`
 
 ## Quick Reference
 
@@ -35,11 +30,9 @@ curl -s -X POST http://localhost:8321/tts -F "text=Hello world" -o /tmp/speak.wa
 
 Always use the server — it keeps the model and voice embedding warm in memory.
 
-**Port:** 8321 (avoids conflicts with common services)
-
-**Default voice:** Loaded once at server start from `~/.config/pocket-tts/default-voice.wav`
-
-**Streaming:** The `/tts` endpoint returns chunked WAV. With `ffplay`, audio starts playing while generation continues.
+- **Port:** 8321
+- **Default voice:** `~/.config/pocket-tts/default-voice.wav` (loaded once at server start)
+- **Streaming:** `/tts` returns chunked WAV. Pipe to `ffplay` for immediate playback during generation.
 
 ## Changing Voices
 
