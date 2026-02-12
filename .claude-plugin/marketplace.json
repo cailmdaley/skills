@@ -1,0 +1,14 @@
+{
+  "name": "skills",
+  "owner": {
+    "name": "Cail Daley",
+    "email": "cailmdaley@gmail.com"
+  },
+  "plugins": [
+    {
+      "name": "skills",
+      "description": "Agent skills for research: autonomous iteration loops, bibliography management, data visualization, scientific coding, image generation, and TTS.",
+      "source": "./"
+    }
+  ]
+}
