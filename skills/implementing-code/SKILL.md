@@ -81,8 +81,5 @@ Trust scientific libraries to validate their domains. Skip defensive programming
 
 ## Working Agreements
 
-- Ask for clarification on ambiguous requirements rather than making design decisions
-- Batch related implementations together in a single response
 - Before implementing numerical algorithms, think through stability and convergence
-- Preserve existing project structure and codebase patterns
 - Deliver working code, basic validation, and integration notes (if connecting to existing code)

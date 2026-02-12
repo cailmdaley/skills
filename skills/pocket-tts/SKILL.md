@@ -62,16 +62,6 @@ To change the default, restart server with different `--voice`.
 ffmpeg -y -ss START_SECONDS -t 30 -i input.mp3 -ar 24000 -ac 1 ~/.config/pocket-tts/default-voice.wav
 ```
 
-## Examples
-
-| Request | Action |
-|---------|--------|
-| "Read this aloud" | Speak the referenced text |
-| "Say 'hello world'" | Speak the quoted text |
-| "Tell me about X, out loud" | Generate response, then speak it |
-| "In Jean's voice..." | Use `voice_url=jean` parameter |
-| "Narrate this passage" | Speak the passage |
-
 ## Troubleshooting
 
 **Server not responding:** Check if process died, restart with serve command

@@ -8,7 +8,7 @@ Shape the spec interactively with the user. Draft first — an imperfect draft i
 
 2. **Draft** — Get clay on the wheel. Create a markdown file using the template:
    ```bash
-   cp <base>/templates/spec.md my-spec.md
+   cp <base>/assets/spec.md my-spec.md
    ```
    Fill in what you can: goal, desired state, pointers. Don't wait until it's perfect.
 

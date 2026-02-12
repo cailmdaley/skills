@@ -107,17 +107,7 @@ When adding a paper to the bibliography:
 - `author = {{Schneider}, Peter and {Kilbinger}, Martin}` + `year = 2012` → `schneider.kilbinger12`
 - `author = {{Asgari}, Marika}` + `year = 2017` → `asgari17`
 
-## Error Handling
-
-- **No arXiv ID found**: Ask user to provide it manually or search for the paper directly
-- **Multiple search results**: Show options and ask user to select the correct paper
-- **ADS API fails**: Show error and suggest manual bibcode lookup or entry
-- **Duplicate citation key**: Warn user, show existing entry, offer to replace or rename
-- **Missing bibliography file**: Report error and ask for correct file path
-
 ## Notes
 
 - Always use the `bibtexabs` endpoint (not `bibtex`) to include abstracts
-- Parse author list carefully: format is `author = {{LastName}, FirstName and {LastName}, FirstName ...}`
-- Before appending, verify file exists and has proper BibTeX format
-- Preserve existing entries when appending new ones
+- ADS author format: `author = {{LastName}, FirstName and {LastName}, FirstName ...}`
