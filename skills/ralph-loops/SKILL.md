@@ -1,13 +1,13 @@
 ---
-name: ralph
+name: ralph-loops
 description: >
   High-throughput autonomous iteration. Survey → contribute → exit → repeat.
   Use when: (1) spec is well-defined, (2) work can be parallelized,
   (3) fresh perspective each iteration prevents bias accumulation.
-  Triggers: "ralph", "autonomous", "loop", "iterate".
+  Triggers: "ralph-loops", "ralph", "autonomous", "loop", "iterate".
 ---
 
-# Ralph
+# Ralph Loops
 
 Meditative iteration toward a desired state. Each pass: survey freely, work until you've used roughly half your context, update state discoverably, exit. The loop continues until the state is achieved.
 
@@ -50,4 +50,4 @@ See [references/crafting-specs.md](references/crafting-specs.md).
 
 ---
 
-Pattern adapted from [ralph-wiggum](https://ghuntley.com/ralph/).
+Pattern adapted from [Ralph Wiggum](https://ghuntley.com/ralph/).

@@ -1,8 +1,0 @@
-{
-  "name": "skills",
-  "version": "0.1.0",
-  "description": "Research skills for Claude Code: autonomous iteration, bibliography management, data visualization, scientific coding, image generation, TTS, and flashcards.",
-  "author": {
-    "name": "Cail Daley"
-  }
-}

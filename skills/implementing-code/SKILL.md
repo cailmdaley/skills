@@ -3,6 +3,8 @@ name: implementing-code
 description: Implement scientific analysis code with quality and correctness following research workflow standards. Use when writing research code, implementing algorithms, creating analysis scripts, or developing scientific computations.
 ---
 
+# Implementing Code
+
 **Core philosophy**: Write it right the first time — clean, concise, conceptually dense code that doesn't need editing afterward. Zero linting violations (ruff or project-specified tools). Check CLAUDE.md for project-specific standards.
 
 ## Conceptual Density

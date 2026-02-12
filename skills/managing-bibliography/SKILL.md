@@ -4,6 +4,8 @@ description: Read arXiv paper source and add BibTeX entries via ADS API. Use for
 model: claude-haiku-4-5
 ---
 
+# Managing Bibliography
+
 Read scientific papers and manage citations. Two capabilities:
 
 1. **Read papers** — Download arXiv LaTeX source to read full text, verify claims, understand methodology

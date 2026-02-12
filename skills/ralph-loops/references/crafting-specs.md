@@ -1,4 +1,4 @@
-# Crafting Ralph Specs
+# Crafting Ralph Loops Specs
 
 Shape the spec interactively with the user. Draft first — an imperfect draft invites better feedback than an empty page.
 
@@ -32,7 +32,7 @@ Don't rush crystallization. A well-shaped spec runs itself.
 <base>/scripts/ralph <spec.md> [-- extra-flags...]
 ```
 
-This creates a tmux session that loops while the spec's YAML frontmatter has `status: open` or `status: active`. Each iteration gets the spec as system prompt and activates the Ralph skill.
+This creates a tmux session that loops while the spec's YAML frontmatter has `status: open` or `status: active`. Each iteration gets the spec as system prompt and activates the ralph-loops skill.
 
 Session: `ralph-<spec-name>`. Attach: `tmux attach -t ralph-<spec-name>`.
 

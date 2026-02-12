@@ -1,10 +1,10 @@
 ---
-name: speaking
+name: pocket-tts
 description: >
   Speak text aloud using local TTS. Use when the user wants to hear something read out loud, spoken, voiced, narrated, or audibly rendered. Triggers on: "read this aloud", "say this", "speak", "out loud", "tell me [verbally]", "narrate", "voice this", "hear this", "read to me", "TTS", or any request to audibly render text.
 ---
 
-# Speaking
+# Pocket TTS
 
 Local text-to-speech via pocket-tts server. Streams audio for low latency. **macOS only** (uses `afplay` as fallback).
 

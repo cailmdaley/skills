@@ -27,7 +27,7 @@ WORK_DIR="$(pwd)"
 
 # Check if already running
 if tmux has-session -t "$SESSION" 2>/dev/null; then
-    echo "Ralph already running: $SESSION"
+    echo "Ralph Loops already running: $SESSION"
     echo "  Attach: tmux attach -t $SESSION"
     exit 0
 fi
@@ -49,14 +49,14 @@ tmux new-session -d -s "$SESSION" -c "$WORK_DIR" bash -c "
         iteration=\$((iteration + 1))
         echo ''
         echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-        echo \"Ralph iteration \$iteration — \$(date '+%H:%M:%S')\"
+        echo \"Ralph Loops iteration \$iteration — \$(date '+%H:%M:%S')\"
         echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
 
         SPEC_CONTENT=\$(cat '$SPEC_FILE')
-        SYSTEM_PROMPT=\"Ralph iteration \$iteration. Spec: $SPEC_FILE
+        SYSTEM_PROMPT=\"Ralph Loops iteration \$iteration. Spec: $SPEC_FILE
 
 \$SPEC_CONTENT\"
-        echo \"You are inside a Ralph loop — a meditative iteration toward a desired state. Activate the Ralph skill and follow its instructions for iterating on the spec above.\" | claude --dangerously-skip-permissions $EXTRA_FLAGS --append-system-prompt \"\$SYSTEM_PROMPT\"
+        echo \"You are inside a Ralph loop — a meditative iteration toward a desired state. Activate the ralph-loops skill and follow its instructions for iterating on the spec above.\" | claude --dangerously-skip-permissions $EXTRA_FLAGS --append-system-prompt \"\$SYSTEM_PROMPT\"
 
         echo '--- Iteration complete ---'
         sleep 2
@@ -64,7 +64,7 @@ tmux new-session -d -s "$SESSION" -c "$WORK_DIR" bash -c "
 
     echo ''
     echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-    echo \"Ralph complete — \$iteration iterations\"
+    echo \"Ralph Loops complete — \$iteration iterations\"
     echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
     echo ''
     echo 'Session kept open for inspection. Type exit to close.'
