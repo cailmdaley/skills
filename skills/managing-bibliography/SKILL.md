@@ -1,6 +1,11 @@
 ---
 name: managing-bibliography
-description: Read arXiv paper source and add BibTeX entries via ADS API. Use for research that requires reading full paper text and managing citations.
+description: >
+  Read arXiv paper source and add BibTeX entries via ADS API.
+  Use for research that requires reading full paper text and managing citations.
+  Triggers on: "read paper", "cite", "add to bibliography", "bibtex", "ADS",
+  "arXiv", "find paper", "add citation", or any request to read scientific papers
+  or manage references.
 model: claude-haiku-4-5
 ---
 
@@ -10,19 +15,6 @@ Read scientific papers and manage citations. Two capabilities:
 
 1. **Read papers** — Download arXiv LaTeX source to read full text, verify claims, understand methodology
 2. **Cite papers** — Fetch BibTeX from NASA ADS and add to bibliography
-
-**Activation**: Use this skill when you need to:
-- Read a paper's full text (not just abstract)
-- Verify a claim before citing it
-- Add citations to your bibliography
-- Research how other papers phrase similar findings
-
-**Usage pattern**:
-- "Read the KiDS-Legacy paper to see how they report B-mode PTEs"
-- "Add [paper description] to the bibliography"
-- "Find and cite [author name] [year] [topic]"
-
----
 
 ## Reading Papers
 
@@ -123,17 +115,9 @@ When adding a paper to the bibliography:
 - **Duplicate citation key**: Warn user, show existing entry, offer to replace or rename
 - **Missing bibliography file**: Report error and ask for correct file path
 
-## Key Configuration Points
-
-- **ADS API Token**: Read from `$ADS_API_TOKEN` environment variable
-- **ADS Search endpoint**: `https://api.adsabs.harvard.edu/v1/search/query`
-- **ADS Export endpoint**: `https://api.adsabs.harvard.edu/v1/export/bibtexabs/{bibcode}`
-- **Export format**: Use `bibtexabs` endpoint to include abstracts
-
 ## Notes
 
-- Always use the `bibtexabs` endpoint to include abstract in the entry
+- Always use the `bibtexabs` endpoint (not `bibtex`) to include abstracts
 - Parse author list carefully: format is `author = {{LastName}, FirstName and {LastName}, FirstName ...}`
-- Year is straightforward: `year = YYYY`
 - Before appending, verify file exists and has proper BibTeX format
 - Preserve existing entries when appending new ones

@@ -1,6 +1,10 @@
 ---
 name: implementing-code
-description: Implement scientific analysis code with quality and correctness following research workflow standards. Use when writing research code, implementing algorithms, creating analysis scripts, or developing scientific computations.
+description: >
+  Implement scientific analysis code with quality and correctness following research workflow standards.
+  Use when writing research code, implementing algorithms, creating analysis scripts, or developing
+  scientific computations. Triggers on: "implement", "write code", "code this up", "analysis script",
+  "algorithm", "compute", "calculate", or any request to write or implement scientific/numerical code.
 ---
 
 # Implementing Code

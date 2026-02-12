@@ -6,6 +6,9 @@ description: >
   but capable of creative/expressive output for outreach.
   Use when: plotting data, designing figures for papers/talks, visualizing uncertainty,
   creating publication-quality graphics, or any task involving matplotlib/seaborn/plotly.
+  Triggers on: "plot", "figure", "visualize", "chart", "graph", "histogram",
+  "scatter", "heatmap", "contour", "power spectrum", "corner plot", or any
+  request to create or improve data graphics.
 ---
 
 # Data Visualization
