@@ -1,7 +1,7 @@
 {
   "name": "skills",
   "version": "0.1.0",
-  "description": "Research skills for Claude Code: autonomous iteration loops, bibliography management, data visualization, scientific coding, image generation, TTS, and flashcards.",
+  "description": "Research skills for Claude Code: autonomous iteration loops, bibliography management, data visualization, scientific coding, image generation, and TTS.",
   "author": {
     "name": "Cail Daley",
     "url": "https://github.com/cailmdaley"

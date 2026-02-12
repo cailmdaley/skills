@@ -44,12 +44,6 @@ Speak text aloud using pocket-tts server with streaming audio. macOS only.
 
 Requires: `pip install pocket-tts`, `brew install ffmpeg`, a voice file at `~/.config/pocket-tts/default-voice.wav`.
 
-### anki-flashcards — Flashcard creation
-
-Add cards to Anki via AnkiConnect while reading or studying. Extracts front/back content from context, suggests tags, creates cards.
-
-Requires: Anki running with [AnkiConnect](https://ankiweb.net/shared/info/2055492159) addon installed.
-
 ## License
 
 MIT
