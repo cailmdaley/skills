@@ -1,6 +1,6 @@
 {
   "name": "research-skills",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Agent skills for research: autonomous iteration loops, bibliography management, data visualization, scientific coding, image generation, and TTS.",
   "author": {
     "name": "Cail Daley",

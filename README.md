@@ -2,7 +2,7 @@
 
 Agent skills for research work — autonomous iteration, scientific visualization, bibliography management, image generation, and more. Currently packaged as a [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin, but the skills themselves are just markdown files that any coding agent can use.
 
-**Read each skill before you run it.** These skills shape how your agent works — some, like ralph-loops, run agents with full permissions in autonomous loops. Understand what a skill does before activating it.
+**Read each skill before you run it.** These skills shape how your agent works. **ralph-loops and confer run agents with no permission gates** — they bypass all approval checks and sandboxing. Understand what a skill does before activating it.
 
 **These reflect one person's workflow, not universal best practices.** Fork the repo, delete what doesn't fit, rewrite what almost fits. The best skills are the ones you've made your own.
 
@@ -14,11 +14,17 @@ claude plugin install research-skills
 
 ## What's here
 
-### ralph-loops — Autonomous iteration loops
+### constitution + ralph-loops — Autonomous iteration
 
-Fresh-context loops: survey, contribute, exit, repeat. Each iteration gets the spec as system prompt and starts clean. Give it a markdown spec describing the desired state, and it loops in a tmux session until reality matches — attach to watch, steer, or update the spec mid-run.
+Two skills that work together. **constitution** is the design document — a markdown spec describing the desired state, written to outlast any single iteration. **ralph-loops** is the execution engine — fresh-context loops that survey reality, contribute, and exit, repeating until the constitution is satisfied.
 
-Tell Claude to "use the ralph-loops skill to help me write a spec for [your goal]." Pattern adapted from [Geoffrey Huntley's Ralph Wiggum](https://ghuntley.com/ralph/).
+Use the **constitution** skill to draft a spec: "use the constitution skill to help me write a spec for [your goal]." Then launch with the included `ralph` script, which runs in a tmux session with support for both Claude Code and Codex backends. Attach to watch, steer, or update the spec mid-run.
+
+Pattern adapted from [Geoffrey Huntley's Ralph Wiggum](https://ghuntley.com/ralph/).
+
+### confer — Cross-agent collaboration
+
+Consult the other coding agent — Claude Code calls Codex, Codex calls Claude Code. One-shot mode for quick questions, reviews, or dispatched tasks; tmux session mode for extended back-and-forth collaboration.
 
 ### data-visualization — Scientific figure design
 

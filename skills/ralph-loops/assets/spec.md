@@ -19,3 +19,11 @@ Use pointers, not snapshots. Say "check `grep -r 'pattern'`" not "50 files remai
 ## Skills
 
 [Skills to activate before working. Use `/skill-name`.]
+
+## Evidence
+
+[How to check progress — commands, test suites, grep patterns. Pointers to the ground truth that iterations measure themselves against.]
+
+## Open Questions
+
+[Uncertainties the user should weigh in on. Iterations add to this; the user resolves between loops.]
