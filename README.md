@@ -10,6 +10,10 @@ Agent skills for research work — autonomous iteration, scientific visualizatio
 # Claude Code
 claude plugin marketplace add cailmdaley/skills
 claude plugin install research-skills
+
+# Codex (no plugin system — symlink the skills directory)
+git clone https://github.com/cailmdaley/skills.git ~/.local/share/skills
+ln -s ~/.local/share/skills/skills/* ~/.agents/skills/
 ```
 
 ## What's here
