@@ -41,51 +41,84 @@ if tmux has-session -t "$SESSION" 2>/dev/null; then
     exit 0
 fi
 
+# Write loop script to temp file (avoids heredoc quoting hell)
+LOOP_SCRIPT=$(mktemp /tmp/ralph-loop-XXXXXX.sh)
+cat > "$LOOP_SCRIPT" << 'LOOP'
+#!/bin/bash
+SPEC_FILE="$1"
+WORK_DIR="$2"
+BACKEND="$3"
+EXTRA_FLAGS="$4"
+
+iteration=0
+
+# Check YAML frontmatter for status field
+check_status() {
+    head -50 "$SPEC_FILE" | sed -n '/^---$/,/^---$/p' | grep -qiE 'status:.*(open|active)'
+}
+
+while check_status; do
+    cd "$WORK_DIR"
+    iteration=$((iteration + 1))
+    echo ""
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+    echo "Ralph iteration $iteration — $(date '+%H:%M:%S')"
+    echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+    SPEC_CONTENT=$(cat "$SPEC_FILE")
+
+    SYSPROMPT_FILE=$(mktemp /tmp/ralph-sys-XXXXXX.txt)
+    PROMPT_FILE=$(mktemp /tmp/ralph-prompt-XXXXXX.txt)
+
+    cat > "$SYSPROMPT_FILE" << SYSEOF
+Ralph iteration $iteration. Spec: $SPEC_FILE
+
+$SPEC_CONTENT
+SYSEOF
+
+    cat > "$PROMPT_FILE" << 'PROMPTEOF'
+You are inside a Ralph loop — a meditative iteration toward a desired state. Activate the ralph-loops skill and follow its instructions for iterating on the spec above.
+PROMPTEOF
+
+    PROMPT=$(cat "$PROMPT_FILE")
+
+    if [[ "$BACKEND" == "codex" ]]; then
+        codex --dangerously-bypass-approvals-and-sandbox \
+            --config "developer_instructions=$(cat "$SYSPROMPT_FILE")" \
+            $EXTRA_FLAGS \
+            "$PROMPT"
+    else
+        claude --dangerously-skip-permissions \
+            $EXTRA_FLAGS \
+            --append-system-prompt "$(cat "$SYSPROMPT_FILE")" \
+            <<< "$PROMPT"
+    fi
+
+    rm -f "$SYSPROMPT_FILE" "$PROMPT_FILE"
+
+    echo "--- Iteration complete ---"
+    sleep 2
+done
+
+echo ""
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo "Ralph complete — $iteration iterations"
+echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+echo ""
+echo "Session kept open for inspection. Type exit to close."
+exec bash -l
+LOOP
+
+chmod +x "$LOOP_SCRIPT"
+
 echo "Starting ralph on $SPEC_FILE"
 echo "  Backend: $BACKEND"
 echo "  Work dir: $WORK_DIR"
 [[ -n "$EXTRA_FLAGS" ]] && echo "  Flags:    $EXTRA_FLAGS"
 
-# Create tmux session with the ralph loop
-tmux new-session -d -s "$SESSION" -c "$WORK_DIR" bash -c "
-    iteration=0
-
-    # Check YAML frontmatter for status field
-    check_status() {
-        head -50 '$SPEC_FILE' | sed -n '/^---$/,/^---$/p' | grep -qiE 'status:.*(open|active)'
-    }
-
-    while check_status; do
-        iteration=\$((iteration + 1))
-        echo ''
-        echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-        echo \"Ralph iteration \$iteration — \$(date '+%H:%M:%S')\"
-        echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-
-        SPEC_CONTENT=\$(cat '$SPEC_FILE')
-        SYSTEM_PROMPT=\"Ralph iteration \$iteration. Spec: $SPEC_FILE
-
-\$SPEC_CONTENT\"
-        PROMPT=\"You are inside a Ralph loop — a meditative iteration toward a desired state. Activate the ralph-loops skill and follow its instructions for iterating on the spec above.\"
-
-        if [[ '$BACKEND' == 'codex' ]]; then
-            codex exec --dangerously-bypass-approvals-and-sandbox --config \"developer_instructions=\$SYSTEM_PROMPT\" $EXTRA_FLAGS \"\$PROMPT\"
-        else
-            echo \"\$PROMPT\" | claude --dangerously-skip-permissions $EXTRA_FLAGS --append-system-prompt \"\$SYSTEM_PROMPT\"
-        fi
-
-        echo '--- Iteration complete ---'
-        sleep 2
-    done
-
-    echo ''
-    echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-    echo \"Ralph complete — \$iteration iterations\"
-    echo '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━'
-    echo ''
-    echo 'Session kept open for inspection. Type exit to close.'
-    exec bash
-"
+# Launch tmux with a login shell running the loop script
+tmux new-session -d -s "$SESSION" -c "$WORK_DIR" \
+    bash -l "$LOOP_SCRIPT" "$SPEC_FILE" "$WORK_DIR" "$BACKEND" "$EXTRA_FLAGS"
 
 echo "  Session:  $SESSION"
 echo "  Attach:   tmux attach -t $SESSION"
